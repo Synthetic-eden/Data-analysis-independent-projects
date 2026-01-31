@@ -1,0 +1,24 @@
+import numpy as np
+def calculate(input_list):
+    if len(input_list) != 9:
+        raise ValueError('List must contain nine numbers.')
+    arrayed = np.array(input_list).reshape(3,3)
+    row_means = np.mean(arrayed, axis=1)
+    col_means = np.mean(arrayed , axis=0)
+    row_var = np.var(arrayed , axis=1)
+    col_var = np.var(arrayed, axis=0)
+    row_std = np.std(arrayed, axis=1)
+    col_std = np.std(arrayed, axis=0)
+    row_max = np.max(arrayed, axis=1)
+    col_max = np.max(arrayed, axis=0)
+    row_min = np.min(arrayed, axis=1)
+    col_min = np.min(arrayed, axis=0)
+    row_sum = np.sum(arrayed, axis=1)
+    col_sum = np.sum(arrayed, axis=0)
+    final_dict = {'mean':[col_means.tolist(),row_means.tolist(),np.mean(arrayed).item()],
+                 'variance' :[col_var.tolist(),row_var.tolist(),np.var(arrayed).item()],
+                 'standard deviation' :[col_std.tolist(),row_std.tolist(),np.std(arrayed).item()],
+                 'max':[col_max.tolist(),row_max.tolist(),np.max(arrayed).item()],
+                 'min':[col_min.tolist(),row_min.tolist(),np.min(arrayed).item()],
+                 'sum':[col_sum.tolist(),row_sum.tolist(),np.sum(arrayed).item()]}
+    return final_dict
